@@ -1,18 +1,20 @@
 import React from 'react'
 import logo from '../../logo.svg'
+import CartWidget from '../CartWidget/CartWidget'
+
 const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src={logo} alt="" width="30" height="24" class="d-inline-block align-text-top"/>
-                        LA MORADA
+                    <img src={logo} alt="" width="30" height="24" class="d-inline-block align-text-top" />
+                    LA MORADA
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav">
+                <div className="collapse navbar-collapse d-flex" id="navbarNavDropdown">
+                    <ul className="navbar-nav justify-content-start">
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="#">INICIO</a>
                         </li>
@@ -34,6 +36,7 @@ const NavBar = () => {
                         </li>
 
                     </ul>
+                    <CartWidget className="align-items-end"/>
                 </div>
             </div>
         </nav>

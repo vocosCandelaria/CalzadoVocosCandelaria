@@ -11,7 +11,7 @@ function App() {
       </header>
 
       <NavBar/>
-      <ItemListContainer greeting="PRODUCTOS"/>
+      <ItemListContainer/>
       <ItemCount/>
     </div>
   );

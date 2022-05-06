@@ -11,6 +11,9 @@ const Item = ({imagen, nombre, precio, descripcion, alt}) => {
         <h5 className="card-title">{precio}</h5>
         <p className="card-text">{descripcion}</p>
         <a href="/" className="btn btn-primary">Agregar al carrito</a>
+        <div className='m-2'>
+        <a href="../ItemDetails/ItemDetails" className="btn btn-primary">Ver mas</a>
+        </div>
         </div>
         </div>
     )

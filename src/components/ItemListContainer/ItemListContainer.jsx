@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from '../ItemList/ItemList'
-import Item from '../Item/Item';
-import { item } from '../Config';
+import { item } from '../Config/index';
 
-const ItemListContainer = () => {
-  const [muebles, setMuebles] = useState([]);
+const ItemListContainer = ({greeting}) => {
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const pedido = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(item);
       }, 2000);
     });
-    pedido.then((res) => {setMuebles(res);},(err)=>{console.log("error",err);}
-    )
-    .then(()=>console.log(muebles))
-    .catch((err) => console.log(err));
-    console.log(pedido);
+    pedido
+    .then((res) => {
+      setProducts(res);})
+    .then(()=>console.log (products))
+    .catch((err)=>console.log("error",err))
+    console.log(products)
   }, []);
-
 
   return (
     <div className='ItemListContainer'>
-      <ItemList muebles={muebles} />
+      <ItemList products={products} />
     </div>
   )
 }

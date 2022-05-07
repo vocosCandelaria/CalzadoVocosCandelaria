@@ -1,6 +1,7 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const Item = ({imagen, nombre, precio, descripcion, alt}) => {
+const Item = ({id,imagen, nombre, precio, descripcion, alt}) => {
 
     return (
 
@@ -12,7 +13,7 @@ const Item = ({imagen, nombre, precio, descripcion, alt}) => {
         <p className="card-text">{descripcion}</p>
         <a href="/" className="btn btn-primary">Agregar al carrito</a>
         <div className='m-2'>
-        <a href="../ItemDetails/ItemDetails" className="btn btn-primary">Ver mas</a>
+        <Link to={`/ItemDetailContainer/${id}`} className="btn btn-primary">Ver mas</Link>
         </div>
         </div>
         </div>

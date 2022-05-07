@@ -1,17 +1,19 @@
 import React from 'react'
-const ItemDetails = ({ imagen, nombre, precio, descripcion, alt }) => {
+import ItemCount from '../ItemCount/ItemCount'
+
+const ItemDetails = ({ detalleSillon }) => {
 
     return (
         <div className="conteinerfluid m-5 d-flex">
-            <img src={imagen} className="imagen" alt={alt} />
+            <img src={detalleSillon.imagen} className="imagen" alt={detalleSillon.alt} />
             <div className="cuerpoTexto">
-                <h5 className="card-title">{nombre}</h5>
-                <p className="card-text">{descripcion}</p>
-                <h5 className="card-title">{precio}</h5>
+                <h5 className="card-title">{detalleSillon.nombre}</h5>
+                <p className="card-text">{detalleSillon.descripcion}</p>
+                <h5 className="card-title">{detalleSillon.precio}</h5>
                 <a href="/" className="btn btn-primary">Agregar al carrito</a>
             </div>
+            <ItemCount/>
         </div>
-        
     )
 }
 

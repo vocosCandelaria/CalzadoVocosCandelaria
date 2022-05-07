@@ -1,34 +1,43 @@
-import React, { useState } from 'react'
-import { useState } from 'react';
-import { item } from '../Config'
+import React, { useState, useEffect} from 'react'
+import {useParams} from "react-router-dom"
+import { item } from '../Config/index'
+import ItemDetails from '../ItemDetails/ItemDetails'
 
 const ItemDetailContainer=()=>{
-    const {id}=useParams();
-    const [sillon, setSillon] = useState(null);
-    const filtrado=item.find((prod)=>prod.id===Number(id)) 
+   
+    const [detalleSillon, setDetalleSillon] = useState(null);
+    const {ItemId}=useParams();
+    const filtrado=item.find((item)=>item.id===Number(ItemId)) 
 
-    useEffect(() => {
+    const obtenerItem=()=>{
         const pedir= new Promise ((resolve,reject)=>{
             setTimeout(() => {
-                resolve(filtrado);
-            }, 2000);
-        pedir
-        .then((res)=> {
-            setSillon (res)
-        })
-        .then(()=>console.log(sillon))
-        .catch((err)=>console.log(err));
-    })
-        console.log(sillon)
-    }, []);
-    return <div>ItemDetailContainer</div>
-    };
+            resolve(filtrado);
+           }, 2000);
+            })
+            pedir 
+            .then((res)=> {
+                setDetalleSillon (res) 
+            })  
+            .then(()=>console.log(detalleSillon))  
+            .catch((err)=>console.log(err));
+            console.log(detalleSillon)
+            return () => {}
+    }
 
-    // return () => {
-    //     <div className='ItemDetailContainer'>
-    //         { producto ? <ItemDetail producto={producto}/>:<h1>cargando</h1>}
-    //     </div>
-    // }
+    useEffect(() => {
+        obtenerItem()
+        return () => {}
+    },[])
 
+    return (
+        <div className='ItemDetailContainer'>
+        { detalleSillon ? (
+            <ItemDetails detalleSillon={detalleSillon}/>
+        )
+        :(<h1>cargando</h1>)}
+        </div>
+    )
+    }
 
 export default ItemDetailContainer

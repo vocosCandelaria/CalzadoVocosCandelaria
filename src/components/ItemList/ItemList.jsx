@@ -1,19 +1,21 @@
-import React from 'react'
-import Item from '../Item/Item'
+import React from 'react';
+import Item from '../Item/Item';
 
-const ItemList = ({ muebles }) => {
+const ItemList = ({ products }) => {
 
     return (
         <div className='d-flex'>
             {
-            muebles.length > 0 ? (muebles.map((mueble) => ( 
+            products.length > 0 ? (products.map((item) => ( 
                 <>
             <Item
-            imagen={mueble.imagen}
-            nombre={mueble.nombre}
-            precio={mueble.precio}
-            descripcion={mueble.descripcion}
-            alt={mueble.alt}
+            key={item.id}
+            id={item.id}
+            imagen={item.imagen}
+            nombre={item.nombre}
+            precio={item.precio}
+            descripcion={item.descripcion}
+            alt={item.alt}
             />
             </>
             )
@@ -23,6 +25,6 @@ const ItemList = ({ muebles }) => {
                 )
                 }
         </div>
-    )
-}
+    );
+};
 export default ItemList;

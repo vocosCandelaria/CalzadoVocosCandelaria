@@ -1,10 +1,12 @@
 import React from 'react';
 import Item from '../Item/Item';
-
+import './ItemList.css'
 const ItemList = ({ products }) => {
 
     return (
-        <div className='d-flex'>
+        
+
+<div className='contenedorItemList'>
             {
             products.length > 0 ? (products.map((item) => ( 
                 <>
@@ -25,6 +27,7 @@ const ItemList = ({ products }) => {
                 )
                 }
         </div>
+        
     );
 };
 export default ItemList;

@@ -1,0 +1,23 @@
+.card {
+    min-height: 75vh;
+    width: auto;
+}
+.card-img-top{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 45vh;
+    width: auto;
+    object-fit: contain;
+}
+.title-card{
+    background-color: rgb(212, 212, 212);
+    padding: 0.5rem;
+    font-family:'Vidaloka', serif;
+    color:white ;
+}
+.price-card{
+    font-family:'Vidaloka', serif;
+    color: #F5B7B1;
+    font-size: 1.5rem;
+}

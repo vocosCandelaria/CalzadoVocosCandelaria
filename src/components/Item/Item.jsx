@@ -1,22 +1,24 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-
-const Item = ({id,imagen, nombre, precio, descripcion, alt}) => {
+import { Link } from 'react-router-dom'
+import './Item.css'
+const Item = ({ id, imagen, nombre, precio, descripcion, alt }) => {
 
     return (
-
-        <div className="card m-5" style={{width: "18rem"}}>
-            <img src={imagen} className="card-img-top" alt={alt} />
-        <div className="card-body">
-        <h5 className="card-title">{nombre}</h5>
-        <h5 className="card-title">{precio}</h5>
-        <p className="card-text">{descripcion}</p>
-        <a href="/" className="btn btn-primary">Agregar al carrito</a>
-        <div className='m-2'>
-        <Link to={`/ItemDetailContainer/${id}`} className="btn btn-primary">Ver mas</Link>
+<div className="col-lg-3 col-md-6 col-sm-12">
+            <div className="card m-2" style={{height:"90vh"}}>
+                <img src={imagen} className="card-img-top"alt={alt} />
+                <div className="card-body">
+                    <h3 className="title-card">{nombre}</h3>
+                    <h4 className="price-card">{precio}</h4>
+                    <p className="card-text">{descripcion}</p>
+                    <a href="/" className="btn">Agregar al carrito</a>
+                    <div className='p-2'>
+                        <Link to={`/ItemDetailContainer/${id}`} className="btn">Ver mas</Link>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
+        
     )
 }
 

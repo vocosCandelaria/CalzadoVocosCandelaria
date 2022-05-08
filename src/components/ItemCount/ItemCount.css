@@ -1,0 +1,26 @@
+.bodyCount{
+    display:flex;
+    width:200px;
+    justify-content:space-around;
+    margin:0 auto;
+    padding:0.5rem;
+    background:#F5B7B1;
+    border-radius: 50px;
+}
+.btn{
+    background:#F5B7B1;
+    font-family: 'Manrope', sans-serif;
+    color:white;
+    font-size: 16px;
+    border-radius: 20px;
+}
+.btn:hover{
+    background-color: white;
+    color: rgb(154, 87, 129);
+    border-color: #F5B7B1;
+}
+.btn-light:hover {
+    color: rgb(154, 87, 129);
+    background-color: #f9fafb;
+    border-color: #f9fafb;
+}

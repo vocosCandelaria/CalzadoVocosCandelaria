@@ -1,0 +1,23 @@
+
+.card-title{
+    color:rgb(245, 179, 212);
+    font-size: 45px;
+    font-family:'Vidaloka', serif;
+}
+.card-text{
+font-family: 'Manrope', sans-serif;
+padding-left: 2rem;
+color:rgb(76, 48, 64);
+line-height: 2rem;
+}
+.card-text p{
+    padding: 0;
+}
+.card-price{
+    color:rgb(248, 192, 220);
+    font-size: 25px;
+    font-family:'Vidaloka', serif;
+}
+.tiempo{
+    color:rgb(173, 15, 105);
+}

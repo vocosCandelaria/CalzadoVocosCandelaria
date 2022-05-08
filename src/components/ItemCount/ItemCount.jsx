@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './ItemCount.css'
 
 const ItemCount = () => {
     const [contador, setContador]=useState (0);
@@ -19,13 +20,14 @@ const ItemCount = () => {
         
   return (
       <>
-    <div style={{display:"flex", width:"250px", justifyContent:"space-around", margin:"0 auto", padding:"2rem",background:"#66FEAF "}}>
-        <button type="button" class="btn btn-light" onClick={restar}>-</button>
-        <h1 style={{color:"white"}}>{contador}</h1>
-        <button type="button" class="btn btn-light" onClick={sumar}>+</button>
+    <div className="bodyCount">
+        <button type="button" className="btn btn-light btn-sm" onClick={restar}>-</button>
+        <h2 style={{color:"white"}}>{contador}</h2>
+        <button type="button" className="btn btn-light btn-sm" onClick={sumar}>+</button>
     </div>
-    <div style={{margin:"2 auto", padding:"2rem"}}>
-    <button type="button" class="btn btn-light" onClick={resetear}>Agregar al carrito</button>
+    {/* <div style={{margin:"2 auto", padding:"1rem"}}> */}
+    <div className="d-grid gap-2 m-4">
+    <button type="button" className="btn btn-sm" onClick={resetear}>Agregar al carrito</button>
     </div>
     </>
   )

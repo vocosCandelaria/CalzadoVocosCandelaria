@@ -23,7 +23,9 @@ const ItemList = ({ products }) => {
             )
             )) : (
                 
-                    <h1>Cargando...</h1>
+                    <h1><div class="loadingio-spinner-ellipsis-zb3lckypqk"><div class="ldio-052vxcpm2cq5">
+                    <div></div><div></div><div></div><div></div><div></div>
+                    </div></div></h1>
                 )
                 }
         </div>

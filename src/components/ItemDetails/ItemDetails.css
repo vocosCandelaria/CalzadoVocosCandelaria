@@ -1,14 +1,21 @@
-
+.contenedorCard{
+    height: 100vh;
+}
 .card-title{
     color:rgb(245, 179, 212);
     font-size: 45px;
     font-family:'Vidaloka', serif;
 }
+.bodyText{
+padding: 2rem;
+align-items: center;
+text-align: center;
+}
 .card-text{
 font-family: 'Manrope', sans-serif;
-padding-left: 2rem;
 color:rgb(76, 48, 64);
 line-height: 2rem;
+margin: 1rem;
 }
 .card-text p{
     padding: 0;
@@ -20,4 +27,7 @@ line-height: 2rem;
 }
 .tiempo{
     color:rgb(173, 15, 105);
+}
+.imagen{
+    position: relative;
 }

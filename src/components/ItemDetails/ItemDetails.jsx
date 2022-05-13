@@ -1,7 +1,15 @@
-import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
-import './ItemDetails.css'
-const ItemDetails = ({ detalleSillon }) => {
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
+
+const ItemDetails = ({detalleSillon}) => {
+        
+    const [quantityBuy,setQuantityBuy]=useState(false)
+    
+    const onAdd=(contador)=>{
+        setQuantityBuy(true)
+        console.log (contador)
+    }
 
     return (
         <div className="container-fluid">
@@ -13,7 +21,15 @@ const ItemDetails = ({ detalleSillon }) => {
                     <p className="card-text text-start">{detalleSillon.descripcion2}</p>
                     <p className="card-text text-start">{detalleSillon.tapizado}</p>
                     <p className="card-text text-start tiempo">{detalleSillon.tiempo}</p>
-                    <ItemCount />
+                    {quantityBuy ? (
+                            <Link to="/Cart" className="btn btn2">FINALIZAR COMPRA</Link>
+                        ) : (
+                    <ItemCount 
+                    stock={detalleSillon.stock}
+                                onAdd={onAdd}
+                    />
+                    )}
+                    
                 </div>
             </div>
         </div>

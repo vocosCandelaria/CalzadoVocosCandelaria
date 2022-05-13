@@ -1,22 +1,21 @@
 import React, {useState} from 'react'
 import './ItemCount.css'
 
-const ItemCount = () => {
-    const [contador, setContador]=useState (0);
-    let stock = 5
+const ItemCount = ({stock, onAdd}) => {
+    const [contador, setContador]=useState (1);
     function sumar (params){
         if(contador<stock){
             setContador(contador + 1)
+        } else{
+            alert("No hay mas stock de este producto. Puede volver al inicio para seguir buscando")
         }
     }
     function restar (params){
-        if(contador>0){
+        if(contador>=1){
             setContador(contador - 1)
         }
     }
-    function resetear (params){
-        setContador(0)
-    }
+
         
   return (
       <>
@@ -25,10 +24,10 @@ const ItemCount = () => {
         <h2 style={{color:"white"}}>{contador}</h2>
         <button type="button" className="btn btn-light btn-sm" onClick={sumar}>+</button>
     </div>
-    {/* <div style={{margin:"2 auto", padding:"1rem"}}> */}
     <div className="d-grid gap-2 m-4">
-    <button type="button" className="btn btn-sm" onClick={resetear}>Agregar al carrito</button>
+    <button type="button" className="btn btn-sm" onClick ={() => onAdd (contador)}>Agregar al carrito</button>
     </div>
+
     </>
   )
 }

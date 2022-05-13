@@ -35,7 +35,7 @@ const ItemDetailContainer=()=>{
         { detalleSillon ? (
             <ItemDetails detalleSillon={detalleSillon}/>
         )
-        :(<div class="loadingio-spinner-ellipsis-zb3lckypqk"><div class="ldio-052vxcpm2cq5">
+        :(<div className="loadingio-spinner-ellipsis-zb3lckypqk"><div className="ldio-052vxcpm2cq5">
 <div></div><div></div><div></div><div></div><div></div>
 </div></div>)}
         </div>

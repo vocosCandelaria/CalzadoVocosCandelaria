@@ -3,46 +3,51 @@ import ItemList from '../ItemList/ItemList'
 import { item } from '../Config/index';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
-const ItemListContainer = ({greeting}) => {
+
+const ItemListContainer = () => {
+
   const [products, setProducts] = useState([]);
   const { CategoriaId } = useParams()
 
   const obtenerProductos=()=>{
   
-    const pedido = new Promise((resolve, reject) => {
+    const promesa = new Promise((resolve, reject) => {
       setTimeout(() => {
 
         let filtrarCategoria = item
 
         if (CategoriaId === 'sillones'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'Sillones'))
+          filtrarCategoria=item.filter((producto => producto.categoria === 'SILLONES'))
         }
 
-        if (CategoriaId === 'Mesas Ratoneras'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'Mesas Ratoneras'))
+        if (CategoriaId === 'mesas'){
+          filtrarCategoria=item.filter((producto => producto.categoria === 'MESAS RATONERAS'))
         }
 
-        if (CategoriaId === 'Alfombras'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'Alfombras'))
+        if (CategoriaId === 'alfombras'){
+          filtrarCategoria=item.filter((producto => producto.categoria === 'ALFOMBRAS'))
         }
 
         resolve(filtrarCategoria)
       }, 2000);
     });
-    pedido
+
+    promesa
     .then((res) => {
       setProducts(res)
     })
     .then(()=>console.log (products))
     .catch((err)=>console.log("error",err))
+
     console.log(products)
+    
     return ()=> {
     }
   };
 
   useEffect(()=>{
     
-    obtenerProductos ()
+    obtenerProductos()
 
     return ()=> {
     }

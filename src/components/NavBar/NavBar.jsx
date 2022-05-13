@@ -16,26 +16,18 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Home</NavLink>
+                            <NavLink className="nav-link" to="/">INICIO</NavLink>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PRODUCTOS
                             </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style={{ backgroundColor: "#D2B4DE" }}>
-                                <li>
-                                    <Link className="dropdown-item text-center" to="/ItemListContainer" style={{ color: "white" }}>Ver todo</Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item text-center" to="/ItemListContainer/sillones" style={{ color: "white" }}>Sillones</Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item text-center" to="/ItemListContainer/mesasRatoneras" style={{ color: "white" }}>Mesas Ratoneras</Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item text-center" to="/ItemListContainer/alfombras" style={{ color: "white" }}>Alfombras</Link>
-                                </li>
-                            </ul>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style={{ backgroundColor: "#D2B4DE" }}>
+                                <Link to={`/ItemListContainer`} className="dropdown-item text-center" style={{ color: "white" }}>VER TODO</Link>
+                                <Link to={`/ItemListContainer/sillones`} className="dropdown-item text-center" style={{ color: "white" }}>SILLONES</Link>
+                                <Link to={`/ItemListContainer/mesas`} className="dropdown-item text-center"  style={{ color: "white" }}>MESAS RATONERAS</Link>
+                                <Link to={`/ItemListContainer/alfombras`} className="dropdown-item text-center"  style={{ color: "white" }}>ALFOMBRAS</Link>
+                            </div>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/Contacto">CONTACTO</NavLink>

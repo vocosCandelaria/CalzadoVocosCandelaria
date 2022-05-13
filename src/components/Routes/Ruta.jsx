@@ -20,7 +20,7 @@ const Ruta = () => {
             <Route path="/ItemDetailContainer" element={<ItemDetailContainer />} />
             <Route path="/Contacto" element={<Contacto />} />
             <Route path="/ItemDetailContainer/:ItemId" element={<ItemDetailContainer />} />
-            <Route path="/ItemDetailContainer/:CategoriaId" element={<ItemListContainer />} />
+            <Route path="/ItemListContainer/:CategoriaId" element={<ItemListContainer />} />
             <Route path="/Cart" element={<Cart />} />
           </Route>
 

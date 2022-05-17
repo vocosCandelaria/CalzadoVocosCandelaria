@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>
-        <h4>Footer</h4>
+    <div style={{backgroundColor: "#D2B4DE"}}>
+        <h4 style={{padding: "2rem", color:"white"}}>Footer</h4>
         </div>
   )
 }

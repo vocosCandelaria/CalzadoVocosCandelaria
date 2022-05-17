@@ -7,6 +7,7 @@ import Layout from '../Layout/Layout'
 import Contacto from '../Contacto/Contacto'
 import Error from '../Error/Error'
 import Cart from '../Cart/Cart'
+import ItemCount from '../ItemCount/ItemCount'
 
 const Ruta = () => {
   return (

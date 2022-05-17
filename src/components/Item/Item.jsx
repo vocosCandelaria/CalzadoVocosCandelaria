@@ -1,10 +1,12 @@
+//Item es la tarjeta con el diseño de bootstrap
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Item.css'
 const Item = ({ id, imagen, nombre, precio, descripcion, alt, categoria, stock}) => {
 
     return (
-<div className="col-lg-3 col-md-6 col-sm-12">
+    <div className="col-lg-3 col-md-6 col-sm-12">
             <div className="card m-2" style={{height:"90vh"}}>
                 <img src={imagen} className="card-img-top"alt={alt} />
                 <div className="card-body">
@@ -17,8 +19,8 @@ const Item = ({ id, imagen, nombre, precio, descripcion, alt, categoria, stock})
                     </div>
                 </div>
             </div>
-        </div>
-        
+    
+    </div>
     )
 }
 

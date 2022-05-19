@@ -13,7 +13,6 @@ const Item = ({ id, imagen, nombre, precio, descripcion, alt, categoria, stock})
                     <h3 className="title-card">{nombre}</h3>
                     <h4 className="price-card">{precio}</h4>
                     <p className="card-text">{descripcion}</p>
-                    <a href="/" className="btn">Agregar al carrito</a>
                     <div className='p-2'>
                         <Link to={`/ItemDetailContainer/${id}`} className="btn">Ver mas</Link>
                     </div>

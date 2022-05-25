@@ -18,7 +18,7 @@ const Ruta = () => {
             <Route index element={<Home />} />
             <Route path="/ItemListContainer" element={<ItemListContainer />} />
             <Route path="/ItemDetailContainer" element={<ItemDetailContainer />} />
-            <Route path="/ItemDetailContainer/:ItemId" element={<ItemDetailContainer />} />
+            <Route path="/ItemDetailContainer/:itemId" element={<ItemDetailContainer />} />
             <Route path="/ItemListContainer/:categoria" element={<ItemListContainer />} />
             <Route path="/Cart" element={<Cart />} />
           </Route>

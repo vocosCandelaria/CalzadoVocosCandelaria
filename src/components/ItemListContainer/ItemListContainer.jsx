@@ -16,11 +16,12 @@ const ItemListContainer = () => {
 
     try {
       
-      const filtrado = categoria ? query(miColeccion, where('categoria','==', categoria)) : miColeccion
+      const filtrado = categoria ? query(miColeccion, where('categoria', '==', categoria)) : miColeccion
       getDocs(filtrado)
 
         .then((datos) => {
           setProducts(datos.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+
         })
 
       console.log(filtrado)

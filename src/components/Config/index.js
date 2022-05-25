@@ -12,7 +12,7 @@ export const item = [
     
     {id:2,
     stock:3,
-    categoria:'MESAS RATONERAS',
+    categoria:'MESAS',
     nombre: 'Retro',
     descripcion: '¡Hermoso moderno y confortable sillón todo ambiente!',
     descripcion2: 'Útil y practico en la sala principal, dormitorio, sala de estar, hall, u oficina. Ideal para la lectura, ver televisión, dispositivo móvil, charlar o descansar.',

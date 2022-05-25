@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from '../ItemList/ItemList'
-import { item } from '../Config/index';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import db from '../../service/firebase'
@@ -17,12 +16,11 @@ const ItemListContainer = () => {
 
     try {
       
-      const filtrado = categoria ? query(miColeccion, where('category', '===', categoria)) : miColeccion
+      const filtrado = categoria ? query(miColeccion, where('categoria','==', categoria)) : miColeccion
       getDocs(filtrado)
 
         .then((datos) => {
           setProducts(datos.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-
         })
 
       console.log(filtrado)

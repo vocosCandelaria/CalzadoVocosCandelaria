@@ -3,61 +3,88 @@ import ItemList from '../ItemList/ItemList'
 import { item } from '../Config/index';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
+import db from '../../service/firebase'
+import { getDocs, collection, where, query } from 'firebase/firestore';
 
 const ItemListContainer = () => {
 
   const [products, setProducts] = useState([]);
-  const { CategoriaId } = useParams()
+  const { categoria } = useParams();
 
-  const obtenerProductos=()=>{
-  
-    const promesa = new Promise((resolve, reject) => {
-      setTimeout(() => {
+  const getData = async () => {
 
-        let filtrarCategoria = item
+    const miColeccion = collection(db, 'index')
 
-        if (CategoriaId === 'sillones'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'SILLONES'))
-        }
+    try {
+      
+      const filtrado = categoria ? query(miColeccion, where('category', '===', categoria)) : miColeccion
+      getDocs(filtrado)
 
-        if (CategoriaId === 'mesas'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'MESAS RATONERAS'))
-        }
+        .then((datos) => {
+          setProducts(datos.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
 
-        if (CategoriaId === 'alfombras'){
-          filtrarCategoria=item.filter((producto => producto.categoria === 'ALFOMBRAS'))
-        }
+        })
 
-        resolve(filtrarCategoria)
-      }, 2000);
-    });
-
-    promesa
-    .then((res) => {
-      setProducts(res)
-    })
-    .then(()=>console.log (products))
-    .catch((err)=>console.log("error",err))
-
-    console.log(products)
-    
-    return ()=> {
+      console.log(filtrado)
+    } catch (error) {
+      console.log(error)
     }
-  };
+  }
 
-  useEffect(()=>{
-    
-    obtenerProductos()
+  useEffect(() => {
+    getData()
+  }, [categoria]);
 
-    return ()=> {
-    }
-  }, [CategoriaId]);
+  // const obtenerProductos=()=>{
+
+  //   const promesa = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+
+  //       let filtrarCategoria = item
+
+  //       if (CategoriaId === 'sillones'){
+  //         filtrarCategoria=item.filter((producto => producto.categoria === 'SILLONES'))
+  //       }
+
+  //       if (CategoriaId === 'mesas'){
+  //         filtrarCategoria=item.filter((producto => producto.categoria === 'MESAS RATONERAS'))
+  //       }
+
+  //       if (CategoriaId === 'alfombras'){
+  //         filtrarCategoria=item.filter((producto => producto.categoria === 'ALFOMBRAS'))
+  //       }
+
+  //       resolve(filtrarCategoria)
+  //     }, 2000);
+  //   });
+
+  //   promesa
+  //   .then((res) => {
+  //     setProducts(res)
+  //   })
+  //   .then(()=>console.log (products))
+  //   .catch((err)=>console.log("error",err))
+
+  //   console.log(products)
+
+  //   return ()=> {
+  //   }
+  // };
+
+  // useEffect(()=>{
+
+  //   obtenerProductos()
+
+  //   return ()=> {
+  //   }
+  // }, [CategoriaId]);
 
   return (
+
     <div className='container-fluid ItemListContainer'>
       <ItemList products={products} />
-      
     </div>
+
   )
 }
 export default ItemListContainer;

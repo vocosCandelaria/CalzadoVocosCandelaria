@@ -39,7 +39,7 @@ export const item = [
     descripcion: '¡Hermoso moderno y confortable sillón todo ambiente!',
     descripcion2: 'Útil y practico en la sala principal, dormitorio, sala de estar, hall, u oficina. Ideal para la lectura, ver televisión, dispositivo móvil, charlar o descansar.',
     tapizado: 'Tapizado chenille/pana/talampaya',
-    tiempo:'Tiempo de entrega: entre 5 y 7 días hábiles.',
+    tiempo:'https://i.blogs.es/aba299/sofa-convertible-escandinavo-3-plazas-rosa-claro-1000-2-21-166194_1/450_1000.jpg',
     precio:'$30000', 
     imagen:'https://i.blogs.es/aba299/sofa-convertible-escandinavo-3-plazas-rosa-claro-1000-2-21-166194_1/450_1000.jpg' }
 ];

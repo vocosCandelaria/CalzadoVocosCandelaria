@@ -1,26 +1,63 @@
-.bodyCount{
-    display:flex;
-    width:200px;
-    justify-content:space-around;
-    margin:0 auto;
-    padding:0.5rem;
-    background:#F5B7B1;
-    border-radius: 50px;
+.bodyCount {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    padding: 0.5rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: #949494;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 25px;
 }
-.btn{
-    background:#F5B7B1;
-    font-family: 'Manrope', sans-serif;
-    color:white;
-    font-size: 16px;
-    border-radius: 20px;
+
+.contador {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
-.btn:hover{
-    background-color: white;
-    color: rgb(154, 87, 129);
-    border-color: #F5B7B1;
+
+.contadorNumero {
+    font-family: 'Poppins', sans-serif;
+    color: #949494;
+    font-weight: 300;
+    font-size: 15px;
+    cursor: pointer;
 }
-.btn-light:hover {
-    color: rgb(154, 87, 129);
-    background-color: #f9fafb;
-    border-color: #f9fafb;
+
+.botonAgregar {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    justify-content: center;
+}
+.botonAgregar:hover{
+    background-color: rgb(39, 38, 38);
+    color: white;
+}
+
+.link {
+    padding-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.volver {
+    color: rgb(247, 177, 177);
+    padding: 7px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.volver:hover {
+    color: #d5588a;
 }

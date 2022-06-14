@@ -1,0 +1,48 @@
+.imagenFondo{
+    margin: 0;
+    height: 70vh;
+    width: 100%;
+    background-image: url('https://images.dfs.co.uk/i/dfs/alluria_3a_viewlister');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.titulosPortada{
+    
+        height: 70vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        color: white;
+        text-align: left;
+        z-index: 1;
+    
+}
+.tituloPortada {
+    font-family: 'Sacramento', cursive;
+    text-align: left;
+    font-size: 4rem;
+}
+.subtitulo{
+    font-size: 1,5 rem;
+}
+.cuadrante{
+    color: rgb(162, 152, 164);
+    height: 20vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerCat{
+    overflow: hidden;
+}

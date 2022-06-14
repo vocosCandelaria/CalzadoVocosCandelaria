@@ -1,16 +1,49 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom";
-import Firebase from '../Firebase/Firebase';
+import React, { useState, useContext } from 'react'
+import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
 import Swal from "sweetalert2"
 import { GlobalContext } from '../../context/CartContext';
+import db from '../../service/firebase';
+import './Formulario.css'
 
+const Input = ({
+    className,
+    type,
+    name,
+    value,
+    inputClassName,
+    onChange,
+    onBlur,
+    placeholder,
+    error,
+}) => {
+    return (
+        <div className={className}>
+            <input
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                onBlur={(e) => onBlur(e)}
+                className={inputClassName}
+                placeholder={placeholder}
+            />
+            {error.name && (
+                <h6 className="text-danger my-2 text-uppercase">{error.name}</h6>
+            )}
+        </div>
+    )
+}
 
-const Formulario = ({ total, compra }) => {
+const validacion = (campos) => { //al menos un elemento del array cumple con la condición
+    return campos.some((campo) => campo === "")
+}
 
-    const { clear } = GlobalContext();
-    const { fetchGenerateTicket } = Firebase();
+const Formulario = ({ items, totalPrecio }) => {
+
+    const { clear } = useContext(GlobalContext); //llamo a clear
 
     const [error, setError] = useState({});
+
     const [formulario, setFormulario] = useState({
         buyer: {
             nombre: "",
@@ -18,20 +51,41 @@ const Formulario = ({ total, compra }) => {
             email: "",
             telefono: ""
         },
-        total: total,
-        item: compra
+        total: totalPrecio,
+        items: items,
     })
 
-    const { buyer: { nombre, apellido, mail, telefono } } = formulario;
+    const fetchGenerateTicket = async ({ datos }) => {
+        try {
+            const coleccion = collection(db, "orders")
+            const order = await addDoc(coleccion, datos)
+            console.log(order.id)
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    const verLleno = (input) => {
-        return input.some((input) => input === "")
+    const fetchUpdateDoc = async (item) => {
+
+        const orderDoc = doc(db, 'index', item.id);
+
+        try {
+            await updateDoc(orderDoc, {
+                stock: item.stock - item.contador
+            });
+            console.log("se actualizó correctamente")
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    const onSubmit = (e) => {
+    const { buyer: { nombre, apellido, email, telefono } } = formulario;
+
+    const onSubmit = (e) => {  // enviar el formulario una vez validado
         e.preventDefault();
-        if (verLleno([email, nombre, apellido, telefono])) {
-            swal.fire(
+        if (validacion([nombre, apellido, email, telefono])) {
+            Swal.fire( //alert
                 {
                     title: "Oops!",
                     text: "Faltan campos por completar",
@@ -45,25 +99,26 @@ const Formulario = ({ total, compra }) => {
             text: "Su orden de compra se generó correctamente",
             icon: "success",
         })
-        fetchGenerateTicket({ datos: formulario });
+        fetchGenerateTicket({ datos: formulario }).then(x => {
+            items.forEach(item => fetchUpdateDoc(item))
+        });
         clear();
     }
 
     const handleChange = (e) => {
-        const { name, value } = e.target
-
+        const { name, value } = e.target;
         setFormulario({
-            ...formulario, //una copia del forumalrio
-            buyer: { //empiezo a sobreescribir el cliente
+            ...formulario,
+            buyer: {
                 ...formulario.buyer,
-                [name]: value, //por cada nombre, apellido, mail, etc.. le pongo su valor. a eso le llame name. 
-            }
-        })
-    }
+                [name]: value,
+            },
+        });
+    };
 
     const handleBlur = (e) => {
-        const { value, name } = e.targer;
-        if (value == "") {
+        const { value, name } = e.target;
+        if (value === "") {
             setError({ ...error, [name]: "Este campo es obligatorio" });
             return;
         }
@@ -72,8 +127,8 @@ const Formulario = ({ total, compra }) => {
 
     return (
         <div>
-            <form onSubmit={onSubmit} className="container border">
-                <h3 className="text-uppercase text-center my-4">datos</h3>
+            <form onSubmit={onSubmit} className="container-fluid border contenedorFormulario">
+                <h4 className="text-uppercase text-center my-4">datos</h4>
                 {Object.keys(formulario.buyer).map((key, index) => (
                     <Input
                         key={index}
@@ -84,85 +139,21 @@ const Formulario = ({ total, compra }) => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         inputClassName={`form-control ${error[key] && "is-invalid"}`}
+                        placeholder={`${key}`}
                         error={error}
                     />
                 ))}
-                {
-                    <Input
-                        className="mb-3"
-                        type="text"
-                        name="nombre"
-                        value={nombre}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        inputClassName={`form-control ${error.nombre && "is-invalid"}`}
-                        placeholder="Ej: Cande"
-                        error={error}
-                    />
-                }
-                {<div className="mb-3">
-                    <Input
-                        type="text"
-                        name="apellido"
-                        value={apellido}
-                        onChange={handleChange}
-                        onBlur={(e) => handleBlur(e)}
-                        placeholder="Ej: vocos"
-                        className={`form-control ${error.apellido && "is-invalid"}`}
-                    />
-                    {error.apellido && (
-                        <h6 className="text-danger my-2 text-uppercase">{error.email}</h6>
-                    )}
-                </div>
-                }
-                {<div className="mb-3">
-                    <Input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleChange}
-                        onBlur={(e) => handleBlur(e)}
-                        placeholder="Ej: vocoscandelaria@gmail.com"
-                        className={`form-control ${error.email && "is-invalid"}`}
-                    />
-                    {error.email && (
-                        <h6 className="text-danger my-2 text-uppercase">{error.email}</h6>
-                    )}
-                </div>
-                }
-                {<div className="mb-3">
-                    <Input
-                        type="text"
-                        name="telefono"
-                        value={telefono}
-                        onChange={handleChange}
-                        onBlur={(e) => handleBlur(e)}
-                        placeholder="Ej: 3513573369"
-                        className={`form-control ${error.telefono && "is-invalid"}`}
-                    />
-                    {error.telefono && (
-                        <h6 className="text-danger my-2 text-uppercase">{error.telefono}</h6>
-                    )}
-                </div>
-                }
-                <div className="border row d-flex px-2">
-                    <div className="col-12 col-lg-9">
-                        <p className="fs-4 text-uppercase">total</p>
+                <div className="row d-flex">
+                    <div className="col-6 col-lg-9">
+                        <p className="fs-4 text-uppercase">TOTAL:</p>
                     </div>
-                    <div className="col-12 col-lg-3">
-                        <p className="fs-4">${total}</p>
+                    <div className="col-6 col-lg-3">
+                        <p className="price-card" align="right" style={{fontSize:"18px"}}>${totalPrecio}</p>
                     </div>
-                    <button
-                        type="submit"
-                        className="btn btn-primary text-uppercase w-100 my-4"
-                    >
-                        terminar la compra
-                    </button>
                 </div>
-
-                <Link to="/" className="btn btn-secondary text-uppercase my-2 w-100">
-                    volver a comprar
-                </Link>
+                <div className="row d-flex botonformulario">
+                        <button type="submit" className="btn botonAgregar text-uppercase terminarCompra ">terminar la compra</button>
+                </div>
             </form>
         </div>
     )

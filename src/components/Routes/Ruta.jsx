@@ -5,8 +5,8 @@ import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
 import Home from '../Home/Home'
 import Layout from '../Layout/Layout'
 import Error from '../Error/Error'
-import Cart from '../Cart/Cart'
-import ItemCount from '../ItemCount/ItemCount'
+import CartContainer from '../CartContainer/CartContainer'
+import Contacto from '../Contacto/Contacto'
 
 const Ruta = () => {
   return (
@@ -20,7 +20,9 @@ const Ruta = () => {
             <Route path="/ItemDetailContainer" element={<ItemDetailContainer />} />
             <Route path="/ItemDetailContainer/:itemId" element={<ItemDetailContainer />} />
             <Route path="/ItemListContainer/:categoria" element={<ItemListContainer />} />
-            <Route path="/Cart" element={<Cart />} />
+            <Route path="/CartContainer" element={<CartContainer />} />
+            <Route path="/Contacto" element={<Contacto/>}/>
+            
           </Route>
 
 

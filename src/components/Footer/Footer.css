@@ -1,0 +1,27 @@
+.contFooter{
+    align-items: baseline;
+}
+.contIcono{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    padding-top: 1rem;
+}
+
+.icono{
+    color: white;
+    transition: 0.5s;
+    font-size: 2rem;
+    align-items: center;
+}
+.icono:hover{
+    color: rgb(244, 177, 177);
+    font-size: 2.2rem;
+}
+
+.datosFooter{
+    color:white;
+    text-decoration: none;
+}

@@ -2,10 +2,11 @@ import React from 'react'
 import logo from '../Images/LogoMorada.png'
 import CartWidget from '../CartWidget/CartWidget'
 import { NavLink, Link } from 'react-router-dom'
+import './NavBar.css';
 
 const NavBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#D2B4DE" }}>
+        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgb(192 157 153)" }}>
             <div className="container-fluid" style={{ justifyContent: "space-between" }}>
                 <Link className="navbar-brand" to="/">
                     <img src={logo} alt="la morada" width="auto" height="30" style={{ margin: "1rem" }} className="d-inline-block align-text-top" />
@@ -22,11 +23,14 @@ const NavBar = () => {
                             <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PRODUCTOS
                             </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style={{ backgroundColor: "#D2B4DE" }}>
-                                <Link to={`/ItemListContainer`} className="dropdown-item text-center" style={{ color: "white" }}>VER TODO</Link>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style={{ backgroundColor: "rgb(192 157 153)" }}>
+                                <Link to={`/ItemListContainer`} className="dropdown-item text-center linkMenu" style={{ color: "white" }}>VER TODO</Link>
                                 <Link to={`/ItemListContainer/sillones`} className="dropdown-item text-center" style={{ color: "white" }}>SILLONES</Link>
-                                <Link to={`/ItemListContainer/mesas`} className="dropdown-item text-center"  style={{ color: "white" }}>MESAS RATONERAS</Link>
+                                <Link to={`/ItemListContainer/sillas`} className="dropdown-item text-center"  style={{ color: "white" }}>SILLAS</Link>
+                                <Link to={`/ItemListContainer/mesas`} className="dropdown-item text-center"  style={{ color: "white" }}>MESAS</Link>
+                                <Link to={`/ItemListContainer/mesasratoneras`} className="dropdown-item text-center"  style={{ color: "white" }}>MESAS RATONERAS</Link>
                                 <Link to={`/ItemListContainer/alfombras`} className="dropdown-item text-center"  style={{ color: "white" }}>ALFOMBRAS</Link>
+                                
                             </div>
                         </li>
                         <li className="nav-item">

@@ -2,22 +2,59 @@
     min-height: 75vh;
     width: auto;
 }
+.card-body{
+    height: 34vh;
+}
 .card-img-top{
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    object-fit: cover;
     height: 45vh;
     width: auto;
-    object-fit: contain;
 }
 .title-card{
-    background-color: rgb(212, 212, 212);
     padding: 0.5rem;
-    font-family:'Vidaloka', serif;
-    color:white ;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #333;
+    text-align: left;
+}
+.cardText{
+    height: 10vh;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    line-height: 28px;
 }
 .price-card{
-    font-family:'Vidaloka', serif;
-    color: #F5B7B1;
-    font-size: 1.5rem;
+    color: rgb(68, 66, 66) ;
+    font-size: 14px;
+    font-family: "Montserrat",Helvetica,Arial,sans-serif;
+}
+.btnItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgb(192 157 153);
+    height: 2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    font-size: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btnItem:hover{
+    background-color: white;
+    color: rgb(154, 87, 129);
+    border-color: #F5B7B1;
+}
+.btnItem-light:hover {
+    color: rgb(154, 87, 129);
+    background-color: #f9fafb;
+    border-color: #F5B7B1;
 }

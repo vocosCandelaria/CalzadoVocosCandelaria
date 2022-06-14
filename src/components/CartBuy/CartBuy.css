@@ -1,0 +1,52 @@
+.contenedorTotal{
+    width: 100%;
+    margin: 0;
+}
+.contCartBuy{
+    height: auto;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    width: inherit;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-top: 1rem;
+}
+.contImgCartBuy{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 26vh;
+    height: 26vh;
+    overflow: hidden;
+    padding: 0;
+}
+.contenedorDatosCompra{
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    color: #949494;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 25vh;
+}
+.contenedorSubTotal{
+    padding-top: 1rem;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+.imgCartBuy{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+.remove{
+    margin-left: 1rem;
+}
+

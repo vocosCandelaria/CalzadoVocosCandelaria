@@ -1,0 +1,30 @@
+.imagenIzquierda{
+    background-image: url('https://gestion.pe/resizer/u47BxSrLhOUbxe3Fyy7mx0xY5FY=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MDCSYZNS4BGYTHYQM7DQC5F4CA.jpg');
+    height: 75vh;
+    object-fit: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.imgContacto{
+    background-position: bottom;
+}
+.textContacto{
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+        font-family: 'Poppins', sans-serif;
+        line-height: 28px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+    
+}
+.contTituloContacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+.formContacto{
+    padding: 2rem;
+}

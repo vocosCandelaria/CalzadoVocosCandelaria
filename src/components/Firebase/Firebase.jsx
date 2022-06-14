@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import db from '../../service/firebase'
-import {getDocs, collection, doc, addDoc, updateDoc} from 'firebase/firestore';
+import {getDocs, collection, doc} from 'firebase/firestore';
 
 
 
@@ -31,15 +31,15 @@ const Firebase = () => {
         }
     }
 
-    const fetchGenerateTicket=async ({datos})=>{ //obtengo el dato que es todo el state (o sea el cliente con todos sus datos)
-        try {
-            const col=collection (db,"ordenes")
-            const order = await addDoc(col,datos) //me agrega un nuevo producto en mi base de datos de firebase
-            console.log(order.id)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const fetchGenerateTicket=async ({datos})=>{ //obtengo el dato que es todo el state (o sea el cliente con todos sus datos)
+    //     try {
+    //         const col=collection (db,"ordenes")
+    //         const order = await addDoc(col,datos) //me agrega un nuevo producto en mi base de datos de firebase
+    //         console.log(order.id)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     const fetchUpdateDoc = async ({id})=>{ //me trae la info de la base de datos
         const orderDoc=doc (db, "orders", id)

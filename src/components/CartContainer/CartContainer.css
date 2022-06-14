@@ -1,0 +1,35 @@
+.contenedorCartBuy{
+    max-height: 60vh;
+    overflow: scroll;
+    width: auto;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+
+.vaciar{
+    align-items: center;
+    display: flex;
+    justify-content: right;
+    padding-right: 1rem;
+}
+.titulo{
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #333;
+}
+.contenedor::-webkit-scrollbar {
+        width: 8px;     /* Tamaño del scroll en vertical */
+        height: 8px;    /* Tamaño del scroll en horizontal */
+}
+.contenedor::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 4px;
+}
+.contCarritoVacio{
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

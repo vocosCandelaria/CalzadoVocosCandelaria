@@ -4,86 +4,46 @@ import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import db from '../../service/firebase'
 import { getDocs, collection, where, query } from 'firebase/firestore';
+import Spiner from '../Spiner/Spiner';
 
 const ItemListContainer = () => {
 
+  const [loading, setLoading] = useState(false)
   const [products, setProducts] = useState([]);
   const { categoria } = useParams();
 
-  const getData = async () => {
+  useEffect(() => {
+
+    setLoading(true)
 
     const miColeccion = collection(db, 'index')
 
-    try {
-      
-      const filtrado = categoria ? query(miColeccion, where('categoria', '==', categoria)) : miColeccion
-      getDocs(filtrado)
+    const filtrado = categoria ? query(miColeccion, where('categoria', '==', categoria)) : miColeccion
+    getDocs(filtrado)
+      .then((datos) => {
+        setProducts(datos.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      }).finally(() => {
+        setLoading(false)
+      })
 
-        .then((datos) => {
-          setProducts(datos.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-
-        })
-
-      console.log(filtrado)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getData()
   }, [categoria]);
 
-  // const obtenerProductos=()=>{
-
-  //   const promesa = new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-
-  //       let filtrarCategoria = item
-
-  //       if (CategoriaId === 'sillones'){
-  //         filtrarCategoria=item.filter((producto => producto.categoria === 'SILLONES'))
-  //       }
-
-  //       if (CategoriaId === 'mesas'){
-  //         filtrarCategoria=item.filter((producto => producto.categoria === 'MESAS RATONERAS'))
-  //       }
-
-  //       if (CategoriaId === 'alfombras'){
-  //         filtrarCategoria=item.filter((producto => producto.categoria === 'ALFOMBRAS'))
-  //       }
-
-  //       resolve(filtrarCategoria)
-  //     }, 2000);
-  //   });
-
-  //   promesa
-  //   .then((res) => {
-  //     setProducts(res)
-  //   })
-  //   .then(()=>console.log (products))
-  //   .catch((err)=>console.log("error",err))
-
-  //   console.log(products)
-
-  //   return ()=> {
-  //   }
-  // };
-
-  // useEffect(()=>{
-
-  //   obtenerProductos()
-
-  //   return ()=> {
-  //   }
-  // }, [CategoriaId]);
-
   return (
-
-    <div className='container-fluid ItemListContainer'>
-      <ItemList products={products} />
-    </div>
-
+    <>
+      <div className='container-fluid ItemListContainer'>
+        {categoria ? <h2 className='tituloContenedor text-uppercase'>{categoria}</h2> : <h2 className='tituloContenedor text-uppercase'>ver todos</h2>}
+      </div>
+      <div>
+        {
+          loading ? <div className="d-flex justify-content-center mt-5">
+            <Spiner animation="border">
+              <span className="visually-hidden"></span>
+            </Spiner>
+          </div>
+            : <ItemList items={products} />
+        }
+      </div>
+    </>
   )
 }
 export default ItemListContainer;

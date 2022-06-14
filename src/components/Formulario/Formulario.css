@@ -1,0 +1,21 @@
+.contenedorFormulario {
+    text-align: left;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    color: #949494;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    background-color: #f7f7f7;
+    height: 66vh;
+    margin-top: 1rem;
+}
+.terminarCompra{
+    width: 200px;
+}
+.botonformulario{
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}

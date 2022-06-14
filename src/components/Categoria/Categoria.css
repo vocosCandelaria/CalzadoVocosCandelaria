@@ -1,0 +1,41 @@
+.containerCategoria{
+    position: relative; 
+    height: 50vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+} 
+
+.imagenCategoria{
+    background-repeat: no-repeat;
+    background-position: top;
+    object-fit: cover;
+    position: absolute;
+} 
+.capaHover{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.4);
+    opacity: 0;
+    transition: 0.5s;
+    color: white;
+}
+.capaHover:hover{
+    opacity: 1;
+    
+}
+.contCategoria{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,-4);
+}
+.nombreCard{
+    position: absolute;
+}

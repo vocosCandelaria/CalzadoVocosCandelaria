@@ -60,6 +60,12 @@ const Formulario = ({ items, totalPrecio }) => {
             const coleccion = collection(db, "orders")
             const order = await addDoc(coleccion, datos)
             console.log(order.id)
+            Swal.fire({
+                title: "Genial!",
+                text: "Su orden de compra se generó correctamente. El codigo es: "+ order.id,
+                icon: "success",
+                timer: 5000
+            })
         } catch (error) {
             console.log(error);
         }
@@ -87,18 +93,13 @@ const Formulario = ({ items, totalPrecio }) => {
         if (validacion([nombre, apellido, email, telefono])) {
             Swal.fire( //alert
                 {
-                    title: "Oops!",
+                    title: "Ups!",
                     text: "Faltan campos por completar",
                     icon: "error",
                 }
             )
             return;
         }
-        Swal.fire({
-            title: "Genial!",
-            text: "Su orden de compra se generó correctamente",
-            icon: "success",
-        })
         fetchGenerateTicket({ datos: formulario }).then(x => {
             items.forEach(item => fetchUpdateDoc(item))
         });

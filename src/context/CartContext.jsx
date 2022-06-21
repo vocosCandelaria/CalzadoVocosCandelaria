@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import Swal from "sweetalert2";
 
 export const GlobalContext=createContext('') //primero creo el contexto
 
@@ -6,18 +7,27 @@ const CartContext = ({children}) => { //le digo que voy a pasarle muchos hijos
 
     const [carrito, setCarrito]=useState([])
 
-    const addItem = (producto)=>{ // agregar cierta cantidad de un ítem al carrito
-      setCarrito([...carrito,producto])
-    }
-    // const addItem = (item) => {
-    //   if (isInCart(carrito, item)) {
-    //     setCarrito(joinItem(carrito, item))
-    //     alert ("el producto ya fue agregado")
-    //   } else {
-    //     setCarrito([...carrito, item])
-    //     alert ("producto correctamente agregado")
-    //   }
-    // };
+    const addItem = (producto) => {
+      if (isInCart(carrito, producto)) {
+        setCarrito(joinItem(carrito, producto))
+        Swal.fire({
+          icon: 'error',
+          title:'Ups!',
+          text: 'El producto ya fue agregado anteriormente, dirijase al carrito de compras',
+          showConfirmButton: false,
+          timer: 3500
+      })
+      } else {
+        setCarrito([...carrito, producto])
+        Swal.fire({
+          title: 'Genial!',
+          icon: 'success',
+          text: 'Se agrego el producto al carrito',
+          showConfirmButton: false,
+          timer: 3500
+      })
+      }
+    };
   
     const removeItem = (id) =>{// Remover un item del cart usando su id
       const remove = carrito.filter(producto=>producto.id !== id);
@@ -32,9 +42,19 @@ const CartContext = ({children}) => { //le digo que voy a pasarle muchos hijos
       return carrito.reduce((previous,producto)=> previous + producto.cantidad, 0)
     }
 
-    const isInCart =(id)=>{
-      return carrito.some(producto=> producto.id===id)
+    const isInCart =(carrito, producto)=>{
+      return carrito.some(x=> x.id===producto.id)
     }
+
+    const joinItem = (carrito, producto) =>{
+      return carrito.map((x) => {
+        if(x.id === producto.id){
+          x.quantity = producto.quantity;
+          x.stock = producto.stock;
+        }
+        return x;
+      } )
+    };
 
     const totalPrecio=(carrito)=>{
       return carrito.reduce((previo,producto)=> previo + producto.precio * producto.contador, 0)

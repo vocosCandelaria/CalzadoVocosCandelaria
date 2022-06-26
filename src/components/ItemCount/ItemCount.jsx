@@ -26,7 +26,7 @@ const ItemCount = ({ stock, item }) => {
         }
     }
     function restar() {
-        if (contador > 0) {
+        if (contador > 1 ) {
             setContador(contador - 1)
         }
     }
@@ -45,10 +45,12 @@ const ItemCount = ({ stock, item }) => {
                             </div>
                         </div>
                         < div className='col-lg-6 col-md-5 col-sm-6 botonAgregar' style={{margin:"2%", maxWidth:"200px"}}>
-                                <Link to="/CartContainer" type="button" className="link" onClick={() => onAdd(contador)}>Agregar al carrito</Link>
+                                <div type="button" className="link" onClick={() => onAdd(contador)}>Agregar al carrito</div>
                         </div>
                     </div>
-
+                    <div className="mt-5 text-center">
+                        <Link to={`/CartContainer`} className="volver">Ir al carrito</Link>
+                    </div>
                     <div className='row'>
                             <div className="mt-5 text-center">
                                 <Link to={`/ItemListContainer`} className="volver">Volver a la tienda</Link>
@@ -56,9 +58,14 @@ const ItemCount = ({ stock, item }) => {
                     </div>
                 </div>
             ) : (
+                <>
                 <div className="mt-5 text-center">
-                    <Link to={`/ItemListContainer`}>Volver a la tienda</Link>
+                    <Link to={`/ItemListContainer`} type="button" className=" botonAgregar">Seguir comprando</Link>
                 </div>
+                <div className="mt-5 text-center">
+                <Link to={`/CartContainer`} className="volver">Ir al carrito</Link>
+            </div>
+            </>
             )}
         </>
     )
